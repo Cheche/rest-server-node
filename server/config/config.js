@@ -3,7 +3,7 @@
  * Remember, process is global
  */
 
- 
+
 /**
  * Application port
  * Default port 3000
@@ -12,6 +12,7 @@ process.env.PORT = process.env.PORT || 3000;
 
 /**
  * Enviroment
+ * Default 'dev'
  */
 process.env.NODE_ENV = process.env.NODE_ENV || 'dev';
 
@@ -31,3 +32,17 @@ if ( process.env.NODE_ENV === 'dev') {
 
 process.env.URLDB = urlDB;  //set url connection
 
+
+/**
+ * Token settings...
+ * time-to-expire default 30 days [seconds]
+ * secret-hash default
+ */
+process.env.JWT_TTE =  process.env.JWT_TTE || (60*60*24*30);
+process.env.JWT_SH = process.env.JWT_SH || 'AsSIknasdliUjasfi87';
+
+
+console.log( "\n\n\n*****************************************");
+console.log( "ENVIROMENT");
+console.log( process.env);
+console.log( "*****************************************\n\n\n");

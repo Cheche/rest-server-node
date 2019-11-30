@@ -19,8 +19,7 @@ const app = express();                          // Express App
 
 app.use( bodyParser.urlencoded( { extended:false } ) ); // Parser x-www-form-urlencoded
 app.use( bodyParser.json() );                           // Parse application/json
-app.use( require('./routes/users') );                   // Import users
-
+app.use( require('./routes/index') );                   // Import All routes
 
 /**
  * Connect Mongoose
