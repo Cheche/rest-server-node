@@ -2,7 +2,8 @@
  * Config file...
  * Remember, process is global
  */
-
+let dotenv = require('dotenv');
+dotenv.config();
 
 /**
  * Application port
@@ -41,8 +42,9 @@ process.env.URLDB = urlDB;  //set url connection
 process.env.JWT_TTE =  process.env.JWT_TTE || (60*60*24*30);
 process.env.JWT_SH = process.env.JWT_SH || 'AsSIknasdliUjasfi87';
 
-
-console.log( "\n\n\n*****************************************");
-console.log( "ENVIROMENT");
-console.log( process.env);
-console.log( "*****************************************\n\n\n");
+if ( process.env.NODE_ENV === 'dev') {
+    console.log( "\n\n\n*****************************************");
+    console.log( "ENVIROMENT");
+    console.log( process.env);
+    console.log( "*****************************************\n\n\n");
+}
