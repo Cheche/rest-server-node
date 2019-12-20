@@ -44,6 +44,11 @@ process.env.JWT_SH = process.env.JWT_SH || 'AsSIknasdliUjasfi87';
 
 if ( process.env.NODE_ENV === 'dev') {
     console.log( "\n\n\n*****************************************");
+    console.log("In on Docker console:");
+    console.log("docker exec -it node_app_node_1 sh --color=auto");
+    console.log("\nExit Docker console:");
+    console.log("docker exec -it node_app_node_1 sh --color=auto");
+    console.log( "\n\n\n*****************************************");
     console.log( "ENVIROMENT");
     console.log( process.env);
     console.log( "*****************************************\n\n\n");
