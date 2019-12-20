@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 
 /**
- * Verificar token
+ * Check token
  * req: request
  * res: response
  * next: continue program exec
@@ -27,7 +27,28 @@ const jwt = require('jsonwebtoken');
 
  };
 
+/**
+ * Check Role 
+ * 
+ */
+let adminRoleVerification = (req, res, next) => {
+    let user = req.user;
+
+    if (user.role === 'ADMIN_ROLE') {
+        next();
+    } else {
+        return res.json({
+            ok: false,
+            err: {
+                message: 'User does not have enought permissions.'
+            }
+        });
+    }
+
+};
+
 
  module.exports = {
-     tokenVerification
+     tokenVerification,
+     adminRoleVerification
  }

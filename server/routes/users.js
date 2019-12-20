@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 const _ = require('underscore');
 const User = require('../models/user');
 const app = express();
-const { tokenVerification } = require('../middlewares/authentication');
+const { tokenVerification, adminRoleVerification } = require('../middlewares/authentication');
 
 /**
  * Users controller...
@@ -47,7 +47,7 @@ app.get('/user', tokenVerification, (req, res) => {
   
   
 // Post /user
-app.post('/user', function (req, res) {
+app.post('/user', [tokenVerification, adminRoleVerification],function (req, res) {
 
     let body = req.body;
     if (!body.password) return res.status(400).json({ok:false, message:'Password is required.'});
@@ -81,7 +81,7 @@ app.post('/user', function (req, res) {
   
   
 // Put /user/:id
-app.put('/user/:id', function (req, res) {
+app.put('/user/:id', [tokenVerification, adminRoleVerification], function (req, res) {
     let id = req.params.id;
     
     // delete object attribures with lib underscore
@@ -119,7 +119,7 @@ app.put('/user/:id', function (req, res) {
 
 
 // Delete /user/id
-app.delete('/user/:id', function (req, res) {
+app.delete('/user/:id', [tokenVerification, adminRoleVerification], function (req, res) {
     
     let id = req.params.id;
 
