@@ -53,3 +53,8 @@ if ( process.env.NODE_ENV === 'dev') {
     console.log( process.env);
     console.log( "*****************************************\n\n\n");
 }
+
+/**
+ * Google Client ID
+ */
+process.env.GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
