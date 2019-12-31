@@ -7,6 +7,9 @@ let Category = require('../models/category');
 app.get('/category', tokenVerification, (req,res) => {
    
     Category.find({})
+            .sort('description')
+            // .populate('user') // add details users.
+            .populate('user', 'name email')
             .exec((err, category) => {
 
                 if (err) { //internal error
@@ -65,8 +68,10 @@ app.post('/category', tokenVerification ,(req,res) => {
 
     let category = new Category({
         description: body.description,
-        user: req.user.id
+        user: req.user._id
     });
+
+    console.log(category);
 
     category.save( (err, categoryDB) => {
         
@@ -85,7 +90,7 @@ app.post('/category', tokenVerification ,(req,res) => {
         }
 
         // All ok.. response with data created
-        res.json({
+        res.status(201).json({
             ok: true,
             category: categoryDB
         });

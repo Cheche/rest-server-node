@@ -70,7 +70,7 @@ app.post('/user', [tokenVerification, adminRoleVerification],function (req, res)
         }
 
         // no errors
-        res.json({
+        res.status(201).json({
             ok: true,
             user: userDB
         });

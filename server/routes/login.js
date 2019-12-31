@@ -124,7 +124,7 @@ app.post('/google', async (req, res) => {
                { expiresIn: process.env.JWT_TTE }
             );
 
-           return res.json({
+           return res.status(201).json({
              ok: true,
              user: userDB,
              token: token
@@ -154,7 +154,7 @@ app.post('/google', async (req, res) => {
                 { expiresIn: process.env.JWT_TTE }
              );
  
-            return res.json({
+            return res.status(201).json({
               ok: true,
               user: userDB,
               token: token
