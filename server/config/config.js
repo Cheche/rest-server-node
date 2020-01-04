@@ -47,7 +47,7 @@ if ( process.env.NODE_ENV === 'dev') {
     console.log("In on Docker console:");
     console.log("docker exec -it node_app_node_1 sh --color=auto");
     console.log("\nExit Docker console:");
-    console.log("docker exec -it node_app_node_1 sh --color=auto");
+    console.log("exit");
     console.log( "\n\n\n*****************************************");
     console.log( "ENVIROMENT");
     console.log( process.env);

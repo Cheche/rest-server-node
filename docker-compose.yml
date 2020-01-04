@@ -5,7 +5,7 @@ services:
     build:
       context: .
       target: development
-    command: 'npx nodemon server/server.js -e json,hbs,html,css,map,jpeg,jpg,png,svg,js'
+    command: 'npx nodemon server/server.js -e json,hbs,html,css,map,js'
     ports:
       - '3000:3000'
     volumes:
