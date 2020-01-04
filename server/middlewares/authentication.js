@@ -48,7 +48,32 @@ let adminRoleVerification = (req, res, next) => {
 };
 
 
+/**
+ * Verify Token Img
+ */
+let tokenImgVerification = (req, res, next) => {
+
+    let token = req.query.token; // token on URL
+    // verify valid token
+    jwt.verify(token, process.env.JWT_SH, (err, decoded) => {
+
+        if(err) {
+            return res.status(401).json({
+                ok: false,
+                err
+            });
+        }
+
+        req.user = decoded.user;
+        next();
+
+    });    
+
+};
+
+
  module.exports = {
      tokenVerification,
-     adminRoleVerification
+     adminRoleVerification,
+     tokenImgVerification
  }

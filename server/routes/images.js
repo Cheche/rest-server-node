@@ -5,7 +5,7 @@ const path = require('path');
 let app = express();  
 
 // Middlewares
-const { tokenVerification } = require('../middlewares/authentication');
+const { tokenImgVerification } = require('../middlewares/authentication');
 
 
 /**
@@ -15,7 +15,7 @@ const { tokenVerification } = require('../middlewares/authentication');
  * @param {String} img      Name of file.
  * @return {img}            Requested image file or an image file for not found.
  */
-app.get('/images/:type/:img', tokenVerification,(req, res) => {
+app.get('/images/:type/:img', tokenImgVerification,(req, res) => {
     let type = req.params.type;
     let img = req.params.img;
 
